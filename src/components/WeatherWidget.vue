@@ -5,7 +5,9 @@ const API_URL = "https://api.met.no/weatherapi/locationforecast/2.0/compact";
 
 const WeatherForecast = ref();
 const weatherNow = ref();
+const weatherTomorrow = ref();
 const icon_weather = ref();
+const icon_weather_tomorrow = ref();
 const location = ref();
 const gettingLocation = ref(false);
 const errorStr = ref();
@@ -60,7 +62,16 @@ const parseWeatherData = (weatherForecast: any) => {
     weatherForecast.properties.timeseries[index].data.instant.details;
 
   icon_weather.value =
-    weatherForecast.properties.timeseries[0].data.next_1_hours.summary.symbol_code;
+    weatherForecast.properties.timeseries[
+      index
+    ].data.next_1_hours.summary.symbol_code;
+
+  weatherTomorrow.value =
+    weatherForecast.properties.timeseries[index + 24].data.instant.details;
+  icon_weather_tomorrow.value =
+    weatherForecast.properties.timeseries[
+      index + 24
+    ].data.next_1_hours.summary.symbol_code;
 };
 
 const getLocation = async () => {
@@ -125,6 +136,29 @@ const locateMe = async () => {
               v-if="weatherNow"
             >
               {{ weatherNow.air_temperature }}C&#xb0;
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div
+          class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
+          style="height: 100%; flex-direction: row"
+        >
+          <img
+            :src="'img/weather/' + icon_weather_tomorrow + '.svg'"
+            style="width: 20%"
+            alt="ds"
+          />
+          <div>
+            <h5 class="mb-0 text-dark">Været i morgen</h5>
+
+            <div
+              class="card-body mb-1 text-dark"
+              style="color: white"
+              v-if="weatherNow"
+            >
+              {{ weatherTomorrow.air_temperature }}C&#xb0;
             </div>
           </div>
         </div>

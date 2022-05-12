@@ -67,7 +67,7 @@ const getLocation = async () => {
               {{ forcast.DangerLevel }}
             </h6>
             <div class="card-text">
-              {{ forcast.MainText }}
+              <h6>{{ forcast.MainText }}</h6>
             </div>
           </div>
         </div>
