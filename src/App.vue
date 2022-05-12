@@ -1,9 +1,34 @@
+<script setup lang="ts">
+import { RouterView } from "vue-router";
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/mountain">
+          <font-awesome class="nav-link" icon="mountain" href="/mountain" />
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/sea">
+          <font-awesome class="nav-link" icon="water" href="/sea" />
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/map">
+          <font-awesome class="nav-link" icon="map" href="/map" />
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/weather">
+          <font-awesome class="nav-link" icon="cloud" href="/weather" />
+        </a>
+      </li>
+    </ul>
+    <router-view />
+  </div>
 </template>
 
 <style>
@@ -19,6 +44,9 @@ nav {
   padding: 30px;
 }
 
+.nav-link {
+  color: black;
+}
 nav a {
   font-weight: bold;
   color: #2c3e50;
