@@ -6,23 +6,23 @@ import { RouterView } from "vue-router";
   <div>
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#/mountain">
-          <font-awesome class="nav-link" icon="mountain" href="#/mountain" />
+        <a class="nav-link active" aria-current="page" href="/mountain">
+          <font-awesome class="nav-link" icon="mountain" href="/mountain" />
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#/sea">
+        <a class="nav-link active" aria-current="page" href="/sea">
           <font-awesome class="nav-link" icon="water" href="/sea" />
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#/map">
+        <a class="nav-link active" aria-current="page" href="/map">
           <font-awesome class="nav-link" icon="map" href="/map" />
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#/weather">
+        <a class="nav-link active" aria-current="page" href="/weather">
           <font-awesome class="nav-link" icon="cloud" href="/weather" />
         </a>
       </li>
