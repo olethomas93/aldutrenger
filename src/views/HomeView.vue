@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-    <WebCams />
   </div>
 </template>
 
@@ -15,7 +14,6 @@ export default defineComponent({
   name: "HomeView",
   components: {
     HelloWorld,
-    WebCams,
   },
 });
 </script>
