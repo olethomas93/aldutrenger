@@ -149,9 +149,6 @@ const locateMe = async () => {
   padding-top: 5%;
 }
 
-.cards {
-}
-
 .card-body {
   font-weight: bold;
 }

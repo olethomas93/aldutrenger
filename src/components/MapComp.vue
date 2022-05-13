@@ -73,11 +73,8 @@ onMounted(async () => {
   };
 
   var overlay = {
-    bratt: bratthet,
-    Vindkraft: Vindkraft,
-    Bølgevarsel: bolgevarsel,
+    Bratt: bratthet,
     laksekart: laksekart,
-    turruter: Turruter,
   };
   mymap = leaflet.map("mapid", {
     layers: [norgeskart],
