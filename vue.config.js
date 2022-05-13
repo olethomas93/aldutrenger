@@ -3,10 +3,8 @@ module.exports = defineConfig({
   transpileDependencies: true,
 
   pwa: {
-   
-      exclude: [/_redirects/]
-      
-      // ...other Workbox options...
-    
-  }
+    exclude: [/_redirects/],
+
+    // ...other Workbox options...
+  },
 });
