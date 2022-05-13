@@ -25,7 +25,5 @@ const onSlideChange = () => {
       <Avalance />
     </swiper-slide>
     <swiper-slide><WebCams1 /> </swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    ...
   </swiper>
 </template>
