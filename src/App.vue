@@ -26,6 +26,12 @@ import { RouterView } from "vue-router";
           <font-awesome class="nav-link" icon="cloud" href="/weather" />
         </a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/travel">
+          <font-awesome class="nav-link" icon="plane" href="/travel" />
+        </a>
+      </li>
     </ul>
     <router-view v-slot="{ Component }">
       <transition name="fade">

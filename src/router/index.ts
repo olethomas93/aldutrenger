@@ -4,7 +4,7 @@ import SeaView from "@/views/SeaView.vue";
 import MountainView from "@/views/MountainView.vue";
 import MapViewVue from "@/views/MapView.vue";
 import WeatherViewVue from "@/views/WeatherView.vue";
-
+import TravelViewVue from "@/views/TravelView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -36,6 +36,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "weather",
     meta: { transition: "fade", mode: "out-in" },
     component: WeatherViewVue,
+  },
+  {
+    path: "/travel",
+    name: "travel",
+    meta: { transition: "fade", mode: "out-in" },
+    component: TravelViewVue,
   },
 ];
 
