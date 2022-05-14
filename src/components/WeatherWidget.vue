@@ -159,7 +159,7 @@ const locateMe = async () => {
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-6">
         <div
           v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
@@ -218,7 +218,7 @@ const locateMe = async () => {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-6">
         <div
           v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
