@@ -21,6 +21,17 @@ const weatherData = ref();
 onMounted(async () => {
   await locateMe();
   await fetchData(location.value.coords);
+  let content = document.getElementsByClassName("small");
+  let innerContent = document.getElementsByClassName("temp");
+
+  let test = content[0].scrollWidth - innerContent[0].scrollWidth;
+
+  let dist = Math.abs(content[0]?.clientWidth);
+
+  content[0]?.scroll({ left: dist + test });
+  content[1]?.scroll({ left: dist * 2 });
+
+  content[2]?.scroll({ left: dist + test });
 });
 
 const fetchData = async (pos: any) => {
@@ -328,11 +339,12 @@ const locateMe = async () => {
   flex-direction: row;
   align-items: center;
   overflow: auto;
+
   column-gap: 10%;
 }
 
 .temp {
-  overflow: auto;
+  scroll-snap-align: center;
 }
 .wrapper {
   display: flex;
