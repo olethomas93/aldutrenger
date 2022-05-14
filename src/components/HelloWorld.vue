@@ -1,5 +1,5 @@
 <template>
-  <h1>FriLuft</h1>
+  <h1>FriLiv</h1>
 </template>
 
 <script lang="ts">
