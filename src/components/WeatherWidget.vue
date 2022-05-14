@@ -228,7 +228,7 @@ const locateMe = async () => {
             <img
               :src="
                 'img/weather/' +
-                weatherData.tomorrow[0].data.next_1_hours.summary.symbol_code +
+                weatherData.tomorrow[12].data.next_1_hours.summary.symbol_code +
                 '.svg'
               "
               style="width: 20%"
