@@ -119,6 +119,9 @@ const getLocation = async () => {
   });
 };
 
+const roundNumber = (numb: number) => {
+  return numb.toFixed();
+};
 const handleTime = (dataD: Date) => {
   let data = new Date(dataD);
   let hrs = data.getHours();
@@ -145,7 +148,7 @@ const locateMe = async () => {
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm">
+      <div class="col-sm-4">
         <div
           v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
@@ -170,32 +173,31 @@ const locateMe = async () => {
                 v-if="weatherData"
               >
                 {{
-                  weatherData.today[0].data.instant.details.air_temperature
-                }}C&#xb0;
+                  roundNumber(
+                    weatherData.today[0].data.instant.details.air_temperature
+                  )
+                }}&#xb0;
               </div>
             </div>
           </div>
           <div class="small">
-            <template v-for="(item, index) in weatherData.today">
-              <div
-                v-if="
-                  (index % 6 == 0 && index != 0) || index == 23 || index < 4
-                "
-                v-bind:key="item"
-              >
+            <template v-for="item in weatherData.today" v-bind:key="item">
+              <div>
                 <img
                   :src="
                     'img/weather/' +
                     item.data.next_1_hours.summary.symbol_code +
                     '.svg'
                   "
-                  style="width: 40%"
+                  style="width: 4vh"
                   alt="ds"
                 />
 
                 <div class="temp">
                   <h6>
-                    {{ item.data.instant.details.air_temperature }}C&#xb0;
+                    {{
+                      roundNumber(item.data.instant.details.air_temperature)
+                    }}&#xb0;
                   </h6>
 
                   <h6>kl {{ printDate(item) }}</h6>
@@ -205,7 +207,7 @@ const locateMe = async () => {
           </div>
         </div>
       </div>
-      <div class="col-sm">
+      <div class="col-sm-4">
         <div
           v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
@@ -226,29 +228,31 @@ const locateMe = async () => {
 
               <div class="card-body mb-1 text-dark">
                 {{
-                  weatherData.tomorrow[0].data.instant.details.air_temperature
-                }}C&#xb0;
+                  roundNumber(
+                    weatherData.tomorrow[12].data.instant.details
+                      .air_temperature
+                  )
+                }}&#xb0;
               </div>
             </div>
           </div>
           <div class="small">
-            <template v-for="(item, index) in weatherData.tomorrow">
-              <div
-                v-if="(index % 6 == 0 && index != 0) || index == 23"
-                v-bind:key="item"
-              >
+            <template v-for="item in weatherData.tomorrow" v-bind:key="item">
+              <div>
                 <img
                   :src="
                     'img/weather/' +
                     item.data.next_1_hours.summary.symbol_code +
                     '.svg'
                   "
-                  style="width: 40%"
+                  style="width: 4vh"
                   alt="ds"
                 />
                 <div class="temp">
                   <h6>
-                    {{ item.data.instant.details.air_temperature }}C&#xb0;
+                    {{
+                      roundNumber(item.data.instant.details.air_temperature)
+                    }}&#xb0;
                   </h6>
 
                   <h6>kl {{ printDate(item) }}</h6>
@@ -258,7 +262,7 @@ const locateMe = async () => {
           </div>
         </div>
       </div>
-      <div class="col-sm">
+      <div class="col-sm-4">
         <div
           v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
@@ -268,41 +272,43 @@ const locateMe = async () => {
             <img
               :src="
                 'img/weather/' +
-                weatherData.dayafter[0].data.next_1_hours.summary.symbol_code +
+                weatherData.dayafter[12].data.next_1_hours.summary.symbol_code +
                 '.svg'
               "
               style="width: 20%"
               alt="ds"
             />
             <div>
-              <h5 class="mb-0 text-dark">Været overmorgen</h5>
+              <h5 class="mb-0 text-dark">Været i overmorgen</h5>
 
               <div class="card-body mb-1 text-dark" style="color: white">
                 {{
-                  weatherData.dayafter[0].data.instant.details.air_temperature
-                }}C&#xb0;
+                  roundNumber(
+                    weatherData.dayafter[12].data.instant.details
+                      .air_temperature
+                  )
+                }}&#xb0;
               </div>
             </div>
           </div>
           <div class="small">
-            <template v-for="(item, index) in weatherData.dayafter">
-              <div
-                v-if="(index % 6 == 0 && index != 0) || index == 23"
-                v-bind:key="item"
-              >
+            <template v-for="item in weatherData.dayafter" v-bind:key="item">
+              <div>
                 <img
                   :src="
                     'img/weather/' +
                     item.data.next_1_hours.summary.symbol_code +
                     '.svg'
                   "
-                  style="width: 40%"
+                  style="width: 4vh"
                   alt="ds"
                 />
 
                 <div class="temp">
                   <h6>
-                    {{ item.data.instant.details.air_temperature }}C&#xb0;
+                    {{
+                      roundNumber(item.data.instant.details.air_temperature)
+                    }}&#xb0;
                   </h6>
 
                   <h6>kl {{ printDate(item) }}</h6>
@@ -321,11 +327,12 @@ const locateMe = async () => {
   display: flex;
   flex-direction: row;
   align-items: center;
+  overflow: auto;
+  column-gap: 10%;
 }
 
 .temp {
-  display: flex;
-  flex-direction: column;
+  overflow: auto;
 }
 .wrapper {
   display: flex;

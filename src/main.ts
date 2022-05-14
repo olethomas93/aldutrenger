@@ -10,6 +10,7 @@ import {
   faMountain,
   faCloudSun,
   faCloud,
+  faArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(faMap);
@@ -17,6 +18,7 @@ library.add(faWater);
 library.add(faMountain);
 library.add(faCloudSun);
 library.add(faCloud);
+library.add(faArrowDown);
 const app = createApp(App);
 
 app.use(store);

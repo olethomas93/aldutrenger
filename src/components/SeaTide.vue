@@ -87,12 +87,12 @@ const locateMe = async () => {
       <div class="col-sm">
         <div
           class="card border-light shadow-lg p-3 mb-5 rounded"
-          style="height: 100%; flex-direction: row"
+          style="height: 100%"
         >
-          <img src="../assets/tide.svg" style="width: 30%" />
-          <div>
-            <h5 class="mb-0 text-dark">Vannstand nå</h5>
+          <h5 class="mb-0 text-dark">Vannstand nå</h5>
 
+          <div class="content">
+            <img src="../assets/tide.svg" style="width: 40%" />
             <div
               class="card-body mb-1 text-dark"
               style="color: white"
@@ -107,11 +107,12 @@ const locateMe = async () => {
       <div class="col-sm">
         <div
           class="card border-light shadow-lg p-3 mb-5 rounded"
-          style="height: 100%; flex-direction: row"
+          style="height: 100%"
         >
-          <img src="../assets/tideup.svg" style="width: 30%" />
-          <div>
-            <h5 class="mb-0 text-dark">Neste høyvann</h5>
+          <h5 class="mb-0 text-dark">Neste høyvann</h5>
+
+          <div class="content">
+            <img src="../assets/tideup.svg" style="width: 40%" />
             <div class="card-body mb-0 text-dark" v-if="nextHighTide">
               {{ nextHighTide }}
             </div>
@@ -121,12 +122,16 @@ const locateMe = async () => {
       <div class="col-sm">
         <div
           class="card border-light shadow-lg p-3 mb-5 rounded"
-          style="height: 100%; flex-direction: row"
+          style="height: 100%"
         >
-          <img src="../assets/tidedown.svg" style="width: 30%; color: black" />
+          <h5 class="mb-0 text-dark">Neste lavvann</h5>
 
-          <div>
-            <h5 class="mb-0 text-dark">Neste lavvann</h5>
+          <div class="content">
+            <img
+              src="../assets/tidedown.svg"
+              style="width: 40%; color: black"
+            />
+
             <div class="card-body mb-0 text-dark" v-if="nextLowTide">
               {{ nextLowTide }}
             </div>
@@ -137,12 +142,21 @@ const locateMe = async () => {
   </div>
 </template>
 
-<style>
+<style scoped>
+.cards {
+  align-items: center;
+}
 .aligncolumn {
   display: flex;
   align-items: center;
   align-content: stretch;
   flex-direction: row-reverse;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .widget {
