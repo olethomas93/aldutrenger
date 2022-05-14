@@ -273,9 +273,9 @@ const locateMe = async () => {
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <!-- <div class="col-sm-4">
         <div
-          v-if="weatherData"
+          v-if="weatherData.dayafter"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
           style="height: 100%"
         >
@@ -328,7 +328,7 @@ const locateMe = async () => {
             </template>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
