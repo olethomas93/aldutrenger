@@ -25,12 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: { transition: "fade", mode: "out-in" },
     component: MountainView,
   },
-  {
-    path: "/map",
-    name: "map",
-    meta: { transition: "fade", mode: "out-in" },
-    component: MapViewVue,
-  },
+
   {
     path: "/weather",
     name: "weather",
@@ -42,6 +37,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "travel",
     meta: { transition: "fade", mode: "out-in" },
     component: TravelViewVue,
+  },
+  {
+    path: "/map",
+    name: "map",
+    meta: { transition: "fade", mode: "out-in" },
+    component: MapViewVue,
   },
 ];
 
