@@ -1,5 +1,11 @@
 <template>
-  <h1>FriLiv</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <img class="logo" src="../assets/logofriliv.png" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,6 +21,10 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.logo {
+  margin-top: 10%;
+  width: 100%;
+}
 h3 {
   margin: 40px 0 0;
 }
