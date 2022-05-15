@@ -15,7 +15,6 @@ import { RouterView } from "vue-router";
           <font-awesome class="nav-link" icon="water" href="/sea" />
         </a>
       </li>
-    
 
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="/weather">
@@ -29,7 +28,7 @@ import { RouterView } from "vue-router";
         </a>
       </li>
 
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="/map">
           <font-awesome class="nav-link" icon="map" href="/map" />
         </a>
