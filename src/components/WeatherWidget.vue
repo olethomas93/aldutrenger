@@ -113,6 +113,12 @@ const printDate = (item: any) => {
   return handleTime(item.time);
 };
 
+const nextHour = (item: any) => {
+  let hour = handleTimeNumber(item.time);
+
+  return hour;
+};
+
 const getLocation = async () => {
   return new Promise((resolve, reject) => {
     if (!("geolocation" in navigator)) {
@@ -144,6 +150,25 @@ const handleTime = (dataD: Date) => {
   const postTime = hour;
   return postTime;
 };
+
+const handleTimeNumber = (dataD: Date) => {
+  let data = new Date(dataD);
+  let hrs = data.getHours();
+  let hour = hrs.toString();
+
+  if (hrs <= 9) hour = "0" + hrs;
+  const postTime = hour;
+
+  let nextHour = hrs + 6;
+
+  let diff = nextHour - 24;
+
+  let test = "";
+
+  if (nextHour > 23) test = "0" + diff;
+
+  return `${postTime}-${test}`;
+};
 const locateMe = async () => {
   gettingLocation.value = true;
   try {
@@ -159,7 +184,7 @@ const locateMe = async () => {
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div
           v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
@@ -169,7 +194,7 @@ const locateMe = async () => {
             <img
               :src="
                 'img/weather/' +
-                weatherData.today[0].data.next_1_hours.summary.symbol_code +
+                weatherData.today[index].data.next_1_hours.summary.symbol_code +
                 '.svg'
               "
               style="width: 20%"
@@ -185,7 +210,8 @@ const locateMe = async () => {
               >
                 {{
                   roundNumber(
-                    weatherData.today[0].data.instant.details.air_temperature
+                    weatherData.today[index].data.instant.details
+                      .air_temperature
                   )
                 }}&#xb0;
               </div>
@@ -218,7 +244,7 @@ const locateMe = async () => {
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div
           v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
@@ -228,7 +254,8 @@ const locateMe = async () => {
             <img
               :src="
                 'img/weather/' +
-                weatherData.tomorrow[12].data.next_1_hours.summary.symbol_code +
+                weatherData.tomorrow[index].data.next_1_hours.summary
+                  .symbol_code +
                 '.svg'
               "
               style="width: 20%"
@@ -240,7 +267,7 @@ const locateMe = async () => {
               <div class="card-body mb-1 text-dark">
                 {{
                   roundNumber(
-                    weatherData.tomorrow[12].data.instant.details
+                    weatherData.tomorrow[index].data.instant.details
                       .air_temperature
                   )
                 }}&#xb0;
@@ -273,17 +300,32 @@ const locateMe = async () => {
           </div>
         </div>
       </div>
-      <!-- <div class="col-sm-4">
+      <div class="col-sm-4">
         <div
-          v-if="weatherData.dayafter"
+          v-if="weatherData"
           class="card border-light shadow-lg p-3 mb-5 rounded-lg cards"
           style="height: 100%"
         >
           <div class="wrapper">
             <img
+              v-if="
+                weatherData.dayafter[index].data.next_1_hours.summary
+                  .symbol_code
+              "
               :src="
                 'img/weather/' +
-                weatherData.dayafter[12].data.next_1_hours.summary.symbol_code +
+                weatherData.dayafter[index].data.next_1_hours.summary
+                  .symbol_code +
+                '.svg'
+              "
+              style="width: 20%"
+              alt="ds"
+            />
+            <img
+              v-else
+              :src="
+                'img/weather/' +
+                weatherData.dayafter[6].data.next_6_hours.summary.symbol_code +
                 '.svg'
               "
               style="width: 20%"
@@ -295,8 +337,7 @@ const locateMe = async () => {
               <div class="card-body mb-1 text-dark" style="color: white">
                 {{
                   roundNumber(
-                    weatherData.dayafter[12].data.instant.details
-                      .air_temperature
+                    weatherData.dayafter[6].data.instant.details.air_temperature
                   )
                 }}&#xb0;
               </div>
@@ -306,9 +347,21 @@ const locateMe = async () => {
             <template v-for="item in weatherData.dayafter" v-bind:key="item">
               <div>
                 <img
+                  v-if="item.data.next_1_hours"
                   :src="
                     'img/weather/' +
                     item.data.next_1_hours.summary.symbol_code +
+                    '.svg'
+                  "
+                  style="width: 4vh"
+                  alt="ds"
+                />
+
+                <img
+                  v-else
+                  :src="
+                    'img/weather/' +
+                    item.data.next_6_hours.summary.symbol_code +
                     '.svg'
                   "
                   style="width: 4vh"
@@ -322,13 +375,16 @@ const locateMe = async () => {
                     }}&#xb0;
                   </h6>
 
-                  <h6>kl {{ printDate(item) }}</h6>
+                  <h6 v-if="item.data.next_1_hours">
+                    kl {{ printDate(item) }}
+                  </h6>
+                  <h6 v-else>kl {{ nextHour(item) }}</h6>
                 </div>
               </div>
             </template>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
