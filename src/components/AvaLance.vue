@@ -2,7 +2,7 @@
 import { onMounted, ref, computed } from "vue";
 
 const VARSOM_URL =
-  "https://api01.nve.no/hydrology/forecast/avalanche/v6.0.1/api/AvalancheWarningByCoordinates/Simple/";
+  "https://api01.nve.no/hydrology/forecast/avalanche/v6.0.1/api/AvalancheWarningByCoordinates/Detail/";
 
 const avalanceData = ref();
 const location = ref();
@@ -56,7 +56,11 @@ const getLocation = async () => {
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm" v-for="forcast in avalanceData" :key="forcast">
+      <div
+        class="col-sm"
+        v-for="(forcast, index) in avalanceData"
+        :key="forcast"
+      >
         <div class="card shadow p-3 mb-5 bg-white rounded" style="height: 100%">
           <div class="card-body">
             <h5 class="card-title">
@@ -68,6 +72,21 @@ const getLocation = async () => {
             </h6>
             <div class="card-text">
               <h6>{{ forcast.MainText }}</h6>
+              <button
+                class="btn btn-info"
+                type="button"
+                data-bs-toggle="collapse"
+                :data-bs-target="'#details' + index"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                Detaljer
+              </button>
+              <div class="collapse" :id="'details' + index">
+                <div class="card card-body">
+                  <h6>{{ forcast.AvalancheDanger }}</h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
