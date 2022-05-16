@@ -70,10 +70,10 @@ const getLocation = async () => {
             <h6 :class="'color' + forcast.DangerLevel" class="badge">
               {{ forcast.DangerLevel }}
             </h6>
-            <div class="card-text">
+            <div>
               <h6>{{ forcast.MainText }}</h6>
               <button
-                class="btn btn-info"
+                class="btn btn-sm btn-outline-info"
                 type="button"
                 data-bs-toggle="collapse"
                 :data-bs-target="'#details' + index"
