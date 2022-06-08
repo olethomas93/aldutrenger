@@ -347,7 +347,7 @@ const locateMe = async () => {
           </div>
           <div class="small">
             <template v-for="item in weatherData.dayafter" v-bind:key="item">
-              <div>
+              <div class="weather">
                 <img
                   v-if="item.data.next_1_hours"
                   :src="
@@ -415,6 +415,10 @@ const locateMe = async () => {
   align-items: center;
   align-content: stretch;
   flex-direction: row-reverse;
+}
+
+.weather {
+  width: 100px;
 }
 
 .widget {
